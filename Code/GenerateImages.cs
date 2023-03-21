@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
@@ -21,31 +22,38 @@ namespace TIG
                 Directory.CreateDirectory(outputPath);
             }
 
-            Font originalFont = new Font(fontName, 32);
-            int finalSize = CalculateFontSize(originalFont, targetHeight);
-            Font actualFont = new Font(fontName, finalSize);
-            int sizeDifference = (finalSize - targetHeight) >> 1; // mystery divide by two
+            Font font = new Font(fontName, targetHeight);
+            int pixelHeight = CalculatePixelHeight(font, targetHeight);
+            int sizeDifference = 0;// (finalSize - targetHeight) >> 1; // mystery divide by two
+            int totalCount = GardinerToUnicode.Map.Count;
+            int glyph = 0;
             foreach (KeyValuePair<string, string> pair in GardinerToUnicode.Map)
             {
                 string name = pair.Key;
-                if(name == "?")
+                if (name == "?")
                 {
                     continue;
                 }
 
-                if(name.StartsWith("AA"))
+                if (name.StartsWith("AA"))
                 {
                     name = name.Replace("AA", "J");
                 }
 
-                Image image = GenerateTightImage(pair.Value, actualFont, targetHeight, sizeDifference);
+                Console.WriteLine("(" + glyph + "/" + totalCount + ") Generating image " + name + ".png");
+
+                Image image = GenerateTightImage(pair.Value, font, pixelHeight, sizeDifference);
                 image.Save(Path.Combine(outputPath, name + ".png"));
                 image.Dispose();
             }
+
+            Console.WriteLine("Done.");
         }
 
         private static Image GenerateTightImage(string glyph, Font font, int targetHeight, int sizeDifference)
         {
+            // font sizes are a total disaster of nonsense, so we just make a big enough image
+            // to account for all the weirdness...
             Bitmap image = new Bitmap(2 * targetHeight, targetHeight, PixelFormat.Format32bppArgb);
             TextRenderer.DrawText(
                 Graphics.FromImage(image), glyph, font, new Point(0, sizeDifference), Color.Black, TightFormatFlags);
@@ -103,13 +111,14 @@ namespace TIG
             return area;
         }
 
-        private static int CalculateFontSize(Font originalFont, int targetSize)
+        private static int CalculatePixelHeight(Font originalFont, int targetSize)
         {
-            FontFamily family = originalFont.FontFamily;
-            int descent = family.GetCellDescent(originalFont.Style);
-            int emHeight = family.GetEmHeight(originalFont.Style);
-            float desiredHeightRatio = (float)emHeight / (emHeight - descent);
-            return (int)(targetSize * desiredHeightRatio * 0.5f);
+            //FontFamily family = originalFont.FontFamily;
+            //int descent = family.GetCellDescent(originalFont.Style);
+            //int emHeight = family.GetEmHeight(originalFont.Style);
+            //float desiredHeightRatio = (float)emHeight / (emHeight - descent);
+            //return (int)(targetSize * desiredHeightRatio * 0.5f);
+            return 2 * targetSize; // font sizes are weird (!!!)
         }
     }
 }

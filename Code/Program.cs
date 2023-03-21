@@ -1,4 +1,5 @@
 ﻿using System.CommandLine;
+using System.Threading.Tasks;
 
 namespace TIG
 {
@@ -14,7 +15,7 @@ namespace TIG
             getDefaultValue: () => ".\\out\\");
         private static Option<int> SizeOption = new Option<int>(
             name: "--size",
-            description: "Target height in pixels for a full sized glyph",
+            description: "Font size to use for the glyphs",
             getDefaultValue: () => 512);
 
         static int Main(string[] args)
@@ -28,7 +29,7 @@ namespace TIG
                 GenerateImages.Run,
                 FontOption, OutputOption, SizeOption);
 
-            return rootCommand.Invoke(args);
+            return rootCommand.InvokeAsync(args).Result;
         }
     }
 }
