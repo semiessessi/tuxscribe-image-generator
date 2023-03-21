@@ -381,11 +381,6 @@ namespace TIG
             new GardinerSignRange("AA", 1, 7),
             new GardinerSignRange("AA7", 0, 1, true),
             new GardinerSignRange("AA", 8, 32),
-
-            new GardinerSignRange("V11", 3, 3, true),
-
-            // supplements needed for e.g. old king names
-            new GardinerSignRange("K", 9, 24),
         };
 
         private static Dictionary<string, string> CreateGardinerToUnicodeMap()
