@@ -1,0 +1,12 @@
+
+**/[Bb]in/
+**/[Oo]bj/
+**/.vs/
+out
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.VC.db
+
+optipng.exe

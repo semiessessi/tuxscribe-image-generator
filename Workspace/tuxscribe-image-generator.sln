@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.33130.400
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tuxscribe-image-generator", "tuxscribe-image-generator.csproj", "{13017F30-9E56-4930-BD78-E29E0BD3BB81}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13017F30-9E56-4930-BD78-E29E0BD3BB81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13017F30-9E56-4930-BD78-E29E0BD3BB81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13017F30-9E56-4930-BD78-E29E0BD3BB81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13017F30-9E56-4930-BD78-E29E0BD3BB81}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F2E1AA67-2ACC-43D7-AE9F-612A51C4B220}
+	EndGlobalSection
+EndGlobal
