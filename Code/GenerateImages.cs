@@ -35,6 +35,7 @@ namespace TIG
                     continue;
                 }
 
+                ++glyph;
                 Console.WriteLine("(" + glyph + "/" + totalCount + ") Generating image " + name + ".png");
 
                 Image image = GenerateTightImage(pair.Value, font, pixelHeight, sizeDifference);
