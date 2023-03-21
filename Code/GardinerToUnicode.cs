@@ -378,9 +378,9 @@ namespace TIG
             new GardinerSignRange("Z", 16, 16),
             new GardinerSignRange("Z16", 0, 7, true),
 
-            new GardinerSignRange("AA", 1, 7),
-            new GardinerSignRange("AA7", 0, 1, true),
-            new GardinerSignRange("AA", 8, 32),
+            new GardinerSignRange("J", 1, 7),
+            new GardinerSignRange("J7", 0, 1, true),
+            new GardinerSignRange("J", 8, 32),
         };
 
         private static Dictionary<string, string> CreateGardinerToUnicodeMap()

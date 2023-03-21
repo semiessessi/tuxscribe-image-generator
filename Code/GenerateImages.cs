@@ -35,11 +35,6 @@ namespace TIG
                     continue;
                 }
 
-                if (name.StartsWith("AA"))
-                {
-                    name = name.Replace("AA", "J");
-                }
-
                 Console.WriteLine("(" + glyph + "/" + totalCount + ") Generating image " + name + ".png");
 
                 Image image = GenerateTightImage(pair.Value, font, pixelHeight, sizeDifference);

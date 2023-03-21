@@ -1,10 +1,15 @@
 ﻿using System.CommandLine;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 
 namespace TIG
 {
     class Program
     {
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool AllocConsole();
+
         private static Option<string> FontOption = new Option<string>(
             name: "--font",
             description: "The font to use",
@@ -20,6 +25,9 @@ namespace TIG
 
         static int Main(string[] args)
         {
+            // this creates a new console window :(
+            //AllocConsole();
+
             RootCommand rootCommand = new RootCommand("Sample app for System.CommandLine");
             rootCommand.AddOption(FontOption);
             rootCommand.AddOption(OutputOption);
