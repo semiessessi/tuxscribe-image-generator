@@ -28,7 +28,7 @@ namespace TIG
             // this creates a new console window :(
             //AllocConsole();
 
-            RootCommand rootCommand = new RootCommand("Sample app for System.CommandLine");
+            RootCommand rootCommand = new RootCommand("Generate tuxscribe style hieroglyph images from fonts");
             rootCommand.AddOption(FontOption);
             rootCommand.AddOption(OutputOption);
             rootCommand.AddOption(SizeOption);
